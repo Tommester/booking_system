@@ -4,8 +4,8 @@ import {
   useContext,
   useEffect,
   useState,
-  ReactNode,
 } from "react";
+import type { ReactNode } from "react";
 import type { User, Role } from "../types";
 import { loginApi, meApi, register as registerApi } from "../api/auth";
 import { http } from "../api/http";

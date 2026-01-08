@@ -96,7 +96,7 @@ export default function DashboardCalendar() {
   const bookingsOnSelectedDay = useMemo(
     () =>
       bookings.filter((b) =>
-        sameDay(new Date(b.start_time), selectedDate)
+	b.start_time ? sameDay(new Date(b.start_time), selectedDate) : false
       ),
     [bookings, selectedDate]
   );
@@ -167,7 +167,7 @@ export default function DashboardCalendar() {
           {weeks.map((week, wi) =>
             week.map((cell, ci) => {
               const hasBooking = bookings.some((b) =>
-                sameDay(new Date(b.start_time), cell.date)
+		  b.start_time ? sameDay(new Date(b.start_time), cell.date) : false
               );
               const isSelected = sameDay(cell.date, selectedDate);
 
@@ -216,11 +216,11 @@ export default function DashboardCalendar() {
                     {b.room_name ?? "Terem"}
                   </span>
                   <span className="text-slate-600">
-                    {dayFormatter.format(new Date(b.start_time))} –{" "}
+		    {b.start_time ? dayFormatter.format(new Date(b.start_time)) : "—"} –{" "}
                     {new Intl.DateTimeFormat("hu-HU", {
                       hour: "2-digit",
                       minute: "2-digit",
-                    }).format(new Date(b.end_time))}
+		    }).format(b.end_time ? new Date(b.end_time) : new Date())}
                   </span>
                 </li>
               ))}

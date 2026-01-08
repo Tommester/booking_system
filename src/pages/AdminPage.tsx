@@ -2,14 +2,13 @@
 import { useEffect, useState } from "react";
 import TopNav from "../components/TopNav";
 import SideBar from "../components/SideBar";
-import { useAuth, useIsAdmin } from "../context/AuthContext";
+import { useIsAdmin } from "../context/AuthContext";
 import { listBookingLogs } from "../api/bookingLogs";
 import { listRooms } from "../api/rooms";
 import type { BookingLog, Room } from "../types";
 import { format } from "date-fns";
 
 export default function AdminPage() {
-  const { user } = useAuth();
   const isAdmin = useIsAdmin();
 
   const [logs, setLogs] = useState<BookingLog[]>([]);

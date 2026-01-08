@@ -25,7 +25,7 @@ export default function Dashboard() {
               <p className="text-sm text-gray-600">Szabad helyek megtekintése és foglalás.</p>
             </Link>
 
-            {user?.role === "ADMIN" && (
+	   {user?.roles?.some((r) => r.role_name === "ADMIN") && (
               <Link to="/admin" className="bg-white p-5 rounded-xl shadow hover:shadow-md">
                 <h3 className="font-semibold text-lg">Admin felület</h3>
                 <p className="text-sm text-gray-600">Órák, termek, kapacitás kezelése.</p>

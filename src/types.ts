@@ -20,6 +20,16 @@ export interface Room {
   created_at: string;
 }
 
+export type Slot = {
+  id: string;              // make it string to match onBook(string)
+  start: string;           // ISO string
+  end: string;             // ISO string
+  title?: string | null;
+  trainerName?: string | null;
+  capacity: number;
+  bookedCount: number;
+};
+
 export interface Timeslot {
   timeslot_id: number;
   room_id: number;

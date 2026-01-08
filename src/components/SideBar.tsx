@@ -1,6 +1,6 @@
 // src/components/SideBar.tsx
 import { NavLink } from "react-router-dom";
-import { useAuth, useIsAdmin } from "../context/AuthContext";
+import { useIsAdmin } from "../context/AuthContext";
 
 function linkClass({ isActive }: { isActive: boolean }) {
   return [
@@ -12,7 +12,6 @@ function linkClass({ isActive }: { isActive: boolean }) {
 }
 
 export default function SideBar() {
-  const { user } = useAuth();
   const isAdmin = useIsAdmin();
 
   return (
